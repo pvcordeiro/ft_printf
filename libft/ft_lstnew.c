@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 20:14:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/06 21:15:46 by paude-so         ###   ########.fr       */
+/*   Created: 2024/11/04 11:36:28 by paude-so          #+#    #+#             */
+/*   Updated: 2024/11/05 18:43:13 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(const char *uinput, ...)
+t_list	*ft_lstnew(void *content)
 {
-	va_list	v_args;
-	va_start(v_args, uinput);
+	t_list	*n_node;
+
+	n_node = ft_calloc(1, sizeof(t_list));
+	if (!n_node)
+		return (NULL);
+	n_node->content = content;
+	return (n_node);
 }

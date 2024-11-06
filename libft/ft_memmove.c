@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 20:14:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/06 21:15:46 by paude-so         ###   ########.fr       */
+/*   Created: 2024/10/24 11:20:46 by paude-so          #+#    #+#             */
+/*   Updated: 2024/11/05 22:54:28 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(const char *uinput, ...)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	va_list	v_args;
-	va_start(v_args, uinput);
+	if (!dest && !src)
+		return (NULL);
+	if (src > dest)
+		return (ft_memcpy(dest, src, n));
+	while (n--)
+		((unsigned char *)dest)[n] = ((unsigned char *)src)[n];
+	return (dest);
 }

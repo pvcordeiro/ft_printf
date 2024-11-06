@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 20:14:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/06 21:15:46 by paude-so         ###   ########.fr       */
+/*   Created: 2024/10/23 20:32:12 by paude-so          #+#    #+#             */
+/*   Updated: 2024/11/06 00:52:15 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(const char *uinput, ...)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	va_list	v_args;
-	va_start(v_args, uinput);
+	size_t	src_len;
+
+	src_len = ft_strlen(src);
+	if (size)
+	{
+		while (*src && size-- > 1)
+			*dst++ = *src++;
+		*dst = '\0';
+	}
+	return (src_len);
 }

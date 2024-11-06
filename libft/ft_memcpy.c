@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 20:14:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/06 21:15:46 by paude-so         ###   ########.fr       */
+/*   Created: 2024/10/24 11:09:25 by paude-so          #+#    #+#             */
+/*   Updated: 2024/11/05 19:42:19 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(const char *uinput, ...)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	va_list	v_args;
-	va_start(v_args, uinput);
+	unsigned char	*iter;
+
+	iter = (unsigned char *)dest;
+	if (!dest && !src)
+		return (NULL);
+	while (n--)
+		*iter++ = *(unsigned char *)src++;
+	return (dest);
 }

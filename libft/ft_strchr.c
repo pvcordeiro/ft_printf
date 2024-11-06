@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 20:14:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/06 21:15:46 by paude-so         ###   ########.fr       */
+/*   Created: 2024/10/24 14:27:09 by paude-so          #+#    #+#             */
+/*   Updated: 2024/11/06 00:36:35 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(const char *uinput, ...)
+char	*ft_strchr(const char *s, int c)
 {
-	va_list	v_args;
-	va_start(v_args, uinput);
+	while (*s)
+	{
+		if ((char)*s++ == (char)c)
+			return ((char *)--s);
+	}
+	if (!(char)c)
+		return ((char *)s);
+	return (NULL);
 }

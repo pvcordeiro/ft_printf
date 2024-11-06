@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 20:14:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/06 21:15:46 by paude-so         ###   ########.fr       */
+/*   Created: 2024/10/24 15:36:32 by paude-so          #+#    #+#             */
+/*   Updated: 2024/11/06 00:30:28 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(const char *uinput, ...)
+char	*ft_strdup(const char *s)
 {
-	va_list	v_args;
-	va_start(v_args, uinput);
+	char	*dup;
+
+	dup = ft_calloc(ft_strlen(s) + 1, sizeof(char));
+	if (!dup)
+		return (NULL);
+	ft_memcpy(dup, s, ft_strlen(s));
+	return (dup);
 }

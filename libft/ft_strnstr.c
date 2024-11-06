@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 20:14:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/06 21:15:46 by paude-so         ###   ########.fr       */
+/*   Created: 2024/10/24 15:24:51 by paude-so          #+#    #+#             */
+/*   Updated: 2024/11/06 00:43:51 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(const char *uinput, ...)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	va_list	v_args;
-	va_start(v_args, uinput);
+	size_t	ltt_len;
+
+	ltt_len = ft_strlen(little);
+	if (!ltt_len)
+		return ((char *)big);
+	while (*big && ltt_len <= len--)
+	{
+		if (!ft_strncmp(big++, little, ltt_len))
+			return ((char *)--big);
+	}
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 21:05:03 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/07 21:23:58 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/07 21:28:19 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,14 @@ int	ft_puthex(long long n, int base, int upper)
 	return (count);
 }
 
-int	ft_puthex_unsigned(unsigned long long n, int base, int upper)
+int	ft_puthex_unsigned(unsigned long long n)
 {
 	int		count;
 
 	count = 0;
-	if (base == 16)
-	{
-		if (n >= 16)
-			count += ft_puthex_unsigned(n / 16, base, upper);
-		if (upper)
-			count += ft_putchar("0123456789ABCDEF"[n % 16]);
-		else
-			count += ft_putchar("0123456789abcdef"[n % 16]);
-	}
+	if (n >= 16)
+		count += ft_puthex_unsigned(n / 16);
+	count += ft_putchar("0123456789abcdef"[n % 16]);
 	return (count);
 }
 
@@ -65,7 +59,7 @@ int	ft_putpointer(void *pointer)
 	if (pointer == 0)
 		return (count += ft_putstr("(nil)"));
 	count += ft_putstr("0x");
-	count += ft_puthex_unsigned((unsigned long long)pointer, 16, 0);
+	count += ft_puthex_unsigned((unsigned long long)pointer);
 	return (count);
 }
 

@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:45:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/07 16:29:46 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:53:43 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	ft_putstr_fd(char *s, int fd)
 
 	count = 0;
 	if (!s)
-		return (count);
-	while (*s)
 	{
-		write(fd, s++, 1);
-		count++;
+		count += write(fd, "(null)", 6);
+		return (count);
 	}
+	while (*s)
+		count += write(fd, s++, 1);
 	return (count);
 }

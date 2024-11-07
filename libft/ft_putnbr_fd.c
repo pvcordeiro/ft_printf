@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 20:36:11 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/07 16:36:22 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:55:30 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	ft_putnbr_fd(int n, int fd)
 	}
 	if (nb >= 10)
 		count += ft_putnbr_fd((nb / 10), fd);
-	ft_putchar_fd(nb % 10 + '0', fd);
-	count++;
+	count += ft_putchar_fd(nb % 10 + '0', fd);
 	return (count);
 }

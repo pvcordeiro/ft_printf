@@ -1,31 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/07 17:10:21 by paude-so          #+#    #+#             */
+/*   Updated: 2024/11/07 17:20:53 by paude-so         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include "libft/libft.h"
 #include <stdio.h>
 
 int	main(void)
 {
-	char			*string = "abc";
-	int				integer = 456;
+	int				ft_count;
+	int				count;
+	char			*string = NULL;
+	int				integer = -1234;
 	char			character = 'A';
 	unsigned int	u_int = 4294967295;
-	// int				ret;
 
-	ft_printf("ft_printf:\nString: %s\n", string);
-	ft_printf("Int: %d\n", integer);
-	ft_printf("Unsigned int: %u\n", u_int);
-	ft_printf("Char: %c\n", character);
-	ft_printf("Percent: %%\n");
-	ft_printf("\n");
-	
-	printf("\nprintf:\nString: %s\n", string);
-	printf("Int: %d\n", integer);
-	printf("Unsigned int: %u\n", u_int);
-	printf("Char: %c\n", character);
-	printf("Percent: %%\n");
-	ft_printf("\n");
-
-	ft_printf("\n");
-	ft_printf("\nft_printf return: %d\n", ft_printf("Input: asdada"));
-	ft_printf("\n");
-	printf("\nprintf return: %d\n", printf("Input: asdada"));
+	ft_count = ft_printf("\nft_printf Args: \nString: %s\nInt: %d\nUnsigned int: %u\nChar: %c\nPercent: %%\n", string, integer, u_int, character);
+	ft_printf("\nft_printf return value: %d\n", ft_count);
+	count = printf("\nft_printf Args: \nString: %s\nInt: %d\nUnsigned int: %u\nChar: %c\nPercent: %%\n", string, integer, u_int, character);
+	printf("\nprintf return value: %d\n", count);
 }

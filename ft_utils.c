@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:47:42 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/07 16:36:43 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:09:41 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 int	ft_parser(const char *input, va_list args)
 {
 	int		count;
-	
+
 	count = 0;
 	while (*input)
 	{
 		if (*input == '%' && *(input + 1) != '%' && *(input + 1))
 			count += ft_print_args(*(++input), args);
+		else if (*input == '%' && *(input + 1) == '%')
+			count += ft_putchar_fd(*(++input), 1);
 		else
 			count += ft_putchar_fd(*input, 1);
 		input++;
@@ -31,7 +33,7 @@ int	ft_parser(const char *input, va_list args)
 
 int	ft_print_args(char letter, va_list args)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (letter == 's')
@@ -41,7 +43,7 @@ int	ft_print_args(char letter, va_list args)
 	else if (letter == 'u')
 		count += ft_putnbr_unsigned(va_arg(args, unsigned int));
 	else if (letter == 'c')
-		count +=ft_putchar_fd(va_arg(args, int), 1);
+		count += ft_putchar_fd(va_arg(args, int), 1);
 	return (count);
 }
 

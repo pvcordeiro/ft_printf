@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 20:14:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/07 12:35:07 by paude-so         ###   ########.fr       */
+/*   Created: 2024/11/07 11:47:42 by paude-so          #+#    #+#             */
+/*   Updated: 2024/11/07 12:38:18 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_manage_args(char letter, va_list args)
 {
-	int		char_count;
-	va_list	args;
-	va_start(args, format);
+	int char_count;
 
-	while (*format)
+	char_count = 0;
+	if (letter == 's')
 	{
-		if (*format == '%' && (*format + 1))
-		{
-			format++;
-			char_count = ft_manage_args(*format, args);
-		}
-		else
-		{
-			char_count++;
-			write(1, format++, 1);
-		}
+		char_count = ft_strlen(va_arg(args, char *));
+		ft_putstr_fd(va_arg(args, char *), 1);
 	}
-	va_end(args);
+	// else if ()
 	return (char_count);
 }
-

@@ -35,9 +35,13 @@ re: fclean all
 %.o: %.c
 	@$(CC) $(INCLUDES) -c $< -o $@
 
-test: all
+test:
 	@echo "\nCompiling everything and testing it:\n"
+	@$(MAKE) -C libft -s
+	@$(CC) $(INCLUDES) -c $(SRCS)
+	@ar rcs $(NAME) $(OBJS) $(LIBFT)
 	@$(CC) $(INCLUDES) main.c $(NAME) $(LIBFT) -o main && ./main
+	@$(MAKE) -C libft fclean -s
 	@rm -f main $(OBJS) $(NAME) $(LIBFT) libft/*.o
 
 

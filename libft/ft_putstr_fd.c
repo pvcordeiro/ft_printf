@@ -6,16 +6,23 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:45:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/05 19:45:48 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:29:46 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
+	int	count;
+
+	count = 0;
 	if (!s)
-		return ;
+		return (count);
 	while (*s)
+	{
 		write(fd, s++, 1);
+		count++;
+	}
+	return (count);
 }

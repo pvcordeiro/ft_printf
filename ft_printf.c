@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 20:14:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/07 14:26:52 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:56:06 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 
 int	ft_printf(const char *input, ...)
 {
-	int		print_count;
+	int		count;
 	va_list	args;
 
-	print_count = 0;
 	va_start(args, input);
-	ft_printer(input, args, &print_count);
+	count = ft_parser(input, args);
 	va_end(args);
-	return (print_count);
+	return (count);
 }
 

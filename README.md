@@ -46,7 +46,7 @@ Prints the address of a pointer in the format 0x followed by the hexadecimal val
 
 **`int	pv_putstr(char *s);`**
 
-Prints a string, handling NULL strings and empty strings by printing (null) or an empty string.\nAnd yes, I made it recursive because why not.
+Prints a string, handling NULL strings and empty strings by printing (null) or an empty string.   And yes, I made it recursive because why not.
 
 ---
 

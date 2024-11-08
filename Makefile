@@ -28,7 +28,7 @@ re: fclean all
 
 test:
 	@echo "\nCompiling everything and testing it:\n"
-	@$(CC) $(CFLAGS) -c $(SRCS)
+	@$(CC) $(CFLAGS) -c ft_printf.c
 	@ar rcs $(NAME) $(OBJS)
-	@$(CC) $(CFLAGS) $(INCLUDES) main.c $(NAME) && ./a.out
+	@$(CC) $(CFLAGS) $(NAME) && ./a.out
 	@rm -f a.out $(OBJS) $(NAME)

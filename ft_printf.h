@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:39:58 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/07 21:28:35 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/08 00:04:31 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include "libft/libft.h"
 
 int	ft_printf(const char *input, ...);
-int	ft_filter_args(char letter, va_list args);
-int	ft_checker(const char *input, va_list args);
-int	ft_puthex(long long n, int base, int upper);
-int	ft_puthex_unsigned(unsigned long long n);
-int	ft_putpointer(void *pointer);
-int	ft_putchar(char c);
-int	ft_putstr(char *s);
+int	pv_filter_args(char letter, va_list args);
+int	pv_checker(const char *input, va_list args);
+int	pv_puthex(long n, int base, int upper);
+int	pv_puthex_unsigned(unsigned long n);
+int	pv_putpointer(void *pointer);
+int	pv_putchar(char c);
+int	pv_putstr(char *s);
 
 #endif

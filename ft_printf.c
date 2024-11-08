@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 20:14:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/08 00:55:35 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:08:44 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ int	pv_filter_args(char letter, va_list args)
 	else if (letter == 'c')
 		count += pv_putchar(va_arg(args, int));
 	else if (letter == 'd' || letter == 'i')
-		count += pv_puthex(va_arg(args, int), 10, 0);
+		count += pv_puthex_n_deci(va_arg(args, int), 10, 0);
 	else if (letter == 'u')
-		count += pv_puthex(va_arg(args, unsigned int), 10, 0);
+		count += pv_puthex_n_deci(va_arg(args, unsigned int), 10, 0);
 	else if (letter == 'x')
-		count += pv_puthex(va_arg(args, unsigned int), 16, 0);
+		count += pv_puthex_n_deci(va_arg(args, unsigned int), 16, 0);
 	else if (letter == 'X')
-		count += pv_puthex(va_arg(args, unsigned int), 16, 1);
+		count += pv_puthex_n_deci(va_arg(args, unsigned int), 16, 1);
 	else if (letter == 'p')
-		count += pv_putpointer(va_arg(args, void *));
+		count += pv_putaddress(va_arg(args, void *), 1);
 	return (count);
 }

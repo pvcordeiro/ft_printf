@@ -6,13 +6,13 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 21:05:03 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/08 01:57:05 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:09:28 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	pv_puthex(long n, int base, int upper)
+int	pv_puthex_n_deci(long n, int base, int upper)
 {
 	int		count;
 	char	*digits;
@@ -28,24 +28,23 @@ int	pv_puthex(long n, int base, int upper)
 		count += pv_putchar('-');
 	}
 	if (n >= base)
-		count += pv_puthex(n / base, base, upper);
+		count += pv_puthex_n_deci(n / base, base, upper);
 	return (count += pv_putchar(digits[n % base]));
 }
 
-int	pv_putpointer(void *p)
+int	pv_putaddress(void *p, int prefix)
 {
-	if (!p)
-		return (pv_putstr("(nil)"));
-	return (pv_putstr("0x") + pv_puthex_unsigned((unsigned long)p));
-}
-
-int	pv_puthex_unsigned(unsigned long n)
-{
-	int	count;
+	int count;
+	unsigned long n;
 
 	count = 0;
+	n = (unsigned long)p;
+	if (!n)
+		return (pv_putstr("(nil)"));
+	if (prefix)
+		count += pv_putstr("0x");
 	if (n >= 16)
-		count += pv_puthex_unsigned(n / 16);
+		count += pv_putaddress((void *)(n / 16), 0);
 	count += pv_putchar("0123456789abcdef"[n % 16]);
 	return (count);
 }

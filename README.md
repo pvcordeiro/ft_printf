@@ -37,29 +37,23 @@
 
 The main function that mimics the behavior of the standard printf. It takes a format string and a variable number of arguments.
 
-**`int	pv_checker(const char *input, va_list args);`**
+**`int	pv_parse_args(char letter, va_list args);`**
 
 Responsible for parsing the format string and calling appropriate functions based on the format specifiers.
-
-**`int	pv_filter_args(char letter, va_list args);`**
-
 Handles specific format specifiers (%s, %c, %d, %u, %x, %X, %p).
 
-**`int	pv_puthex(long n, int base, int upper);`**
+**`int	pv_puthex_n_deci(long n, int base, int upper);`**
 
-Prints the hexadecimal representation of a number (both lower and upper case) or a decimal number.
+Prints in both decimal and hexadecimal(lower case or upper case) base.
 
-**`int	pv_puthex_unsigned(unsigned long n);`**
-
-Handles the printing of unsigned hexadecimal values.
-
-**`int	pv_putpointer(void *pointer);`**
+**`int	pv_putaddress(void *pointer, int prefix);`**
 
 Prints the address of a pointer in the format 0x followed by the hexadecimal value.
 
 **`int	pv_putstr(char *s);`**
 
 Prints a string, handling NULL strings and empty strings by printing (null) or an empty string.
+And yes, I made it recursive because yes.
 
 **`int	pv_putchar(char c);`**
 
@@ -118,16 +112,17 @@ int	main(void)
 {
 	char			character = 'A';
 	char			*string = NULL;
+	char			*pointer = "abcjds";
 	int				integer = INT_MIN;
 	unsigned int	u_int = UINT_MAX;
 	int				hex = 151516;
 	int				result;
 
 	ft_printf("\n\nft_printf:\n");
-	result = ft_printf("\nChar: %c\nString: %s\nPointer: %p\nInt: %d\nUnsigned int: %u\nPercent: %%\nLower Hex: %x\nUpper Hex: %X\n", character, string, &string, integer, u_int, hex, hex);
+	result = ft_printf("\nChar: %c\nString: %s\nPointer: %p\nInt: %d\nUnsigned int: %u\nPercent: %%\nLower Hex: %x\nUpper Hex: %X\n", character, string, pointer, integer, u_int, hex, hex);
 	ft_printf("\nft_printf return value: %d\n", result);
 	ft_printf("\n\nprintf:\n");
-	result = printf("\nChar: %c\nString: %s\nPointer: %p\nInt: %d\nUnsigned int: %u\nPercent: %%\nLower Hex: %x\nUpper Hex: %X\n", character, string, &string, integer, u_int, hex, hex);
+	result = printf("\nChar: %c\nString: %s\nPointer: %p\nInt: %d\nUnsigned int: %u\nPercent: %%\nLower Hex: %x\nUpper Hex: %X\n", character, string, pointer, integer, u_int, hex, hex);
 	printf("\nprintf return value: %d\n", result);
 }
 ```
@@ -139,27 +134,29 @@ ft_printf:
 
 Char: A
 String: (null)
-Pointer: 0x7ffdd2ac7200
+Pointer: 0x608fa21de008
 Int: -2147483648
 Unsigned int: 4294967295
 Percent: %
-Lower Hex: 24db0
-Upper Hex: 24DB0
+Lower Hex: 24fdc
+Upper Hex: 24FDC
 
-ft_printf return value: 86
+ft_printf return value: 135
+
 
 printf:
 
 Char: A
 String: (null)
-Pointer: 0x7ffdd2ac7200
+Pointer: 0x608fa21de008
 Int: -2147483648
 Unsigned int: 4294967295
 Percent: %
-Lower Hex: 24db0
-Upper Hex: 24DB0
+Lower Hex: 24fdc
+Upper Hex: 24FDC
 
-printf return value: 86
+printf return value: 135
+
 ```
 
 ---

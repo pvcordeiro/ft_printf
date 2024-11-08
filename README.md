@@ -3,11 +3,11 @@
 `ft_printf` is my custom implementation of the standard `printf` function in C, which formats and prints various types of data to the standard output. It supports multiple format specifiers, such as characters, strings, integers, unsigned integers, hexadecimal values, and pointers.
 
 ## 📑 Table of Contents
- [Features](#-features)
- [Functions](#-functions)
- [Compilation](#-compilation)
- [Example Usage](#-example-usage)
- [Authors](#-authors)
+1. [Features](#-features)
+2. [Functions](#-functions)
+3. [Compilation](#-compilation)
+4. [Example Usage](#-example-usage)
+5. [Authors](#-authors)
 
 ---
 

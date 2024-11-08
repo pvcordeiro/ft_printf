@@ -11,7 +11,7 @@ $(NAME): $(OBJ)
 	@echo "\nDone!"
 
 clean:
-	@echo "\nRemoving .o files..."
+	@echo "\nRemoving $(OBJ)..."
 	@rm -f $(OBJ)
 	@echo "\nDone!"
 
@@ -26,8 +26,8 @@ re: fclean all
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 test:
-	@echo "\nCompiling everything and testing it:\n"
+	@echo "\nCompiling main.c with $(NAME) and running it:\n"
 	@$(CC) $(CFLAGS) -c ft_printf.c
 	@ar rcs $(NAME) $(OBJ)
-	@$(CC) $(CFLAGS) $(NAME) && ./a.out
-	@rm -f a.out $(OBJ) $(NAME)
+	@$(CC) $(CFLAGS) main.c $(NAME) && ./a.out
+	@rm -f a.out $(OBJ) $(NAME) a.out

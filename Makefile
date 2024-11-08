@@ -3,32 +3,22 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS = ft_printf.c pv_printer.c
 OBJS = $(SRCS:.c=.o)
 NAME = libftprintf.a
-LIBFT = libft/libft.a
-MAKEFLAGS += --no-print-directory
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS)
+$(NAME): $(OBJS)
 	@echo "\nBuilding $(NAME)..."
-	@ar rcs $(NAME) $(OBJS) libft/*.o
-#delete before sending libft/*.o ^
+	@ar rcs $(NAME) $(OBJS)
 	@echo "\nDone!"
-
-$(LIBFT):
-	@echo "\nBuilding libft.a"
-	@$(MAKE) -C libft -s
-	@echo "\nDone"
 
 clean:
 	@echo "\nRemoving .o files..."
 	@rm -f $(OBJS)
-	@$(MAKE) -C libft clean -s
 	@echo "\nDone!"
 
 fclean: clean
-	@echo "\nRemoving $(NAME) and libft.a ..."
+	@echo "\nRemoving $(NAME)..."
 	@rm -f $(NAME)
-	@$(MAKE) -C libft fclean -s
 	@echo "\nDone!"
 
 re: fclean all
@@ -38,8 +28,7 @@ re: fclean all
 
 test:
 	@echo "\nCompiling everything and testing it:\n"
-	@$(MAKE) -C libft -s
 	@$(CC) $(CFLAGS) -c $(SRCS)
 	@ar rcs $(NAME) $(OBJS)
-	@$(CC) $(CFLAGS) $(INCLUDES) main.c $(NAME) $(LIBFT) -o main && ./main
-	@rm -f main $(OBJS) $(NAME) $(LIBFT) libft/*.o
+	@$(CC) $(CFLAGS) $(INCLUDES) main.c $(NAME) -o main && ./main
+	@rm -f main $(OBJS) $(NAME)

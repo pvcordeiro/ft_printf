@@ -6,10 +6,11 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 20:14:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/08 17:24:56 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:40:06 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>

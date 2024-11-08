@@ -1,19 +1,18 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = ft_printf.c
-OBJS = $(SRCS:.c=.o)
+OBJ = ft_printf.o
 NAME = libftprintf.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJ)
 	@echo "\nBuilding $(NAME)..."
-	@ar rcs $(NAME) $(OBJS)
+	@ar rcs $(NAME) $(OBJ)
 	@echo "\nDone!"
 
 clean:
 	@echo "\nRemoving .o files..."
-	@rm -f $(OBJS)
+	@rm -f $(OBJ)
 	@echo "\nDone!"
 
 fclean: clean
@@ -29,6 +28,6 @@ re: fclean all
 test:
 	@echo "\nCompiling everything and testing it:\n"
 	@$(CC) $(CFLAGS) -c ft_printf.c
-	@ar rcs $(NAME) $(OBJS)
+	@ar rcs $(NAME) $(OBJ)
 	@$(CC) $(CFLAGS) $(NAME) && ./a.out
-	@rm -f a.out $(OBJS) $(NAME)
+	@rm -f a.out $(OBJ) $(NAME)

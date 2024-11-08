@@ -37,23 +37,30 @@
 
 The main function that mimics the behavior of the standard printf. It takes a format string and a variable number of arguments.
 
+
 **`int	pv_parse_args(char letter, va_list args);`**
 
 Responsible for parsing the format string and calling appropriate functions based on the format specifiers.
+
 Handles specific format specifiers (%s, %c, %d, %u, %x, %X, %p).
+
 
 **`int	pv_puthex_n_deci(long n, int base, int upper);`**
 
 Prints in both decimal and hexadecimal(lower case or upper case) base.
 
+
 **`int	pv_putaddress(void *pointer, int prefix);`**
 
 Prints the address of a pointer in the format 0x followed by the hexadecimal value.
 
+
 **`int	pv_putstr(char *s);`**
 
 Prints a string, handling NULL strings and empty strings by printing (null) or an empty string.
-And yes, I made it recursive because yes.
+
+And yes, I made it recursive because why not.
+
 
 **`int	pv_putchar(char c);`**
 

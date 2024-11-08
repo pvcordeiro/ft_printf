@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 21:05:03 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/08 15:09:28 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:20:52 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ int	pv_puthex_n_deci(long n, int base, int upper)
 	char	*digits;
 
 	count = 0;
-	if (upper)
-		digits = "0123456789ABCDEF";
-	else
-		digits = "0123456789abcdef";
 	if (n < 0)
 	{
 		n = -n;
 		count += pv_putchar('-');
 	}
+	if (upper)
+		digits = "0123456789ABCDEF";
+	else
+		digits = "0123456789abcdef";
 	if (n >= base)
 		count += pv_puthex_n_deci(n / base, base, upper);
 	return (count += pv_putchar(digits[n % base]));
@@ -34,8 +34,8 @@ int	pv_puthex_n_deci(long n, int base, int upper)
 
 int	pv_putaddress(void *p, int prefix)
 {
-	int count;
-	unsigned long n;
+	int				count;
+	unsigned long	n;
 
 	count = 0;
 	n = (unsigned long)p;

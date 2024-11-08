@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 20:14:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/08 15:18:57 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:32:03 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,6 @@ int	ft_printf(const char *input, ...)
 	va_list	args;
 
 	va_start(args, input);
-	count = pv_checker(input, args);
-	va_end(args);
-	return (count);
-}
-
-int	pv_checker(const char *input, va_list args)
-{
-	int		count;
-
 	count = 0;
 	while (*input)
 	{
@@ -38,6 +29,7 @@ int	pv_checker(const char *input, va_list args)
 			count += pv_putchar(*input);
 		input++;
 	}
+	va_end(args);
 	return (count);
 }
 

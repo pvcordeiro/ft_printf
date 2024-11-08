@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:39:58 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/08 15:18:57 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:24:05 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 int	ft_printf(const char *input, ...);
 int	pv_parse_args(char letter, va_list args);
-int	pv_checker(const char *input, va_list args);
 int	pv_puthex_n_deci(long n, int base, int upper);
 int	pv_putaddress(void *pointer, int prefix);
 int	pv_putchar(char c);

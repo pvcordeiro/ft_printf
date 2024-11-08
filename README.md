@@ -1,8 +1,16 @@
 # ft_printf 🖨️
 
-## 📜 Overview
-
 `ft_printf` is my custom implementation of the standard `printf` function in C, which formats and prints various types of data to the standard output. It supports multiple format specifiers, such as characters, strings, integers, unsigned integers, hexadecimal values, and pointers.
+
+## 📑 Table of Contents
+1. [Features](#-features)
+2. [Files](#-files)
+3. [Functions](#-functions)
+4. [Compilation](#-compilation)
+5. [Example Usage](#-example-usage)
+6. [Authors](#-authors)
+
+---
 
 ## 🔧 Features
 
@@ -11,6 +19,8 @@
 - Handles edge cases like null pointers and empty strings.
 - Returns the number of characters printed, similar to the standard `printf`.
 
+---
+
 ## 🛠️ Files
 
 - **`ft_printf.c`**: Main logic for handling the printing functionality and format parsing.
@@ -18,6 +28,8 @@
 - **`ft_printf.h`**: Header file containing function prototypes and necessary includes.
 - **`main.c`**: A test file for checking the correctness of the `ft_printf` implementation.
 - **`Makefile`**: Build file for compiling the project and generating the static library `libftprintf.a`.
+
+---
 
 ## 📑 Functions
 
@@ -53,15 +65,15 @@ Prints a string, handling NULL strings and empty strings by printing (null) or a
 
 Writes a single character to the standard output.
 
-📦 Compilation
+---
+
+## 📦 Compilation
 
 To compile the project and create the static library libftprintf.a, run the following command:
 
 ```
 make
 ```
-
-This will generate the library libftprintf.a, which you can use in other projects.
 
 To clean up the object files, use:
 
@@ -91,7 +103,9 @@ make test
 
 This will compile the library, link it with the provided main.c, clean everything and run the tests.
 
-📝 Example Usage
+---
+
+## 📝 Example Usage
 
 Main file (main.c)
 
@@ -118,7 +132,7 @@ int	main(void)
 }
 ```
 
-Example Output:
+Output:
 
 ```
 ft_printf:
@@ -148,6 +162,8 @@ Upper Hex: 24DB0
 printf return value: 86
 ```
 
-👨‍💻 Authors
+---
+
+## 👨‍💻 Authors
 
     pvcordeiro (me)

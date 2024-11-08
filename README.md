@@ -23,7 +23,7 @@
 
 ### `ft_printf`
 
-```c
+
 int	ft_printf(const char *input, ...);
 
 The main function that mimics the behavior of the standard printf. It takes a format string and a variable number of arguments.
@@ -62,36 +62,50 @@ pv_putchar
 int	pv_putchar(char c);
 
 Writes a single character to the standard output.
+
 📦 Compilation
 
 To compile the project and create the static library libftprintf.a, run the following command:
 
+```
 make
+```
 
 This will generate the library libftprintf.a, which you can use in other projects.
 
 To clean up the object files and the static library, use:
 
+```
 make clean
+```
 
 To completely clean the project (remove object files and the library), use:
 
+```
 make fclean
+```
 
 To rebuild everything from scratch, use:
 
+```
 make re
+```
 
 Testing
 
 You can also test the implementation by running:
 
+```
 make test
+```
 
 This will compile the library, link it with the provided main.c, and run the tests.
+
 📝 Example Usage
+
 Main file (main.c)
 
+```
 #include "ft_printf.h"
 #include <stdio.h>
 #include <limits.h>
@@ -106,18 +120,19 @@ int	main(void)
 	int				result;
 
 	ft_printf("\n\nft_printf:\n");
-	result = ft_printf("\nArgs: \nChar: %c\nString: %s\nPointer: %p\nInt: %d\nUnsigned int: %u\nPercent: %%\nLower Hex: %x\nUpper Hex: %X\n", character, string, &string, integer, u_int, hex, hex);
+	result = ft_printf("\nChar: %c\nString: %s\nPointer: %p\nInt: %d\nUnsigned int: %u\nPercent: %%\nLower Hex: %x\nUpper Hex: %X\n", character, string, &string, integer, u_int, hex, hex);
 	ft_printf("\nft_printf return value: %d\n", result);
 	ft_printf("\n\nprintf:\n");
-	result = printf("\nArgs: \nChar: %c\nString: %s\nPointer: %p\nInt: %d\nUnsigned int: %u\nPercent: %%\nLower Hex: %x\nUpper Hex: %X\n", character, string, &string, integer, u_int, hex, hex);
+	result = printf("\nChar: %c\nString: %s\nPointer: %p\nInt: %d\nUnsigned int: %u\nPercent: %%\nLower Hex: %x\nUpper Hex: %X\n", character, string, &string, integer, u_int, hex, hex);
 	printf("\nprintf return value: %d\n", result);
 }
+```
 
 Example Output:
 
+```
 ft_printf:
 
-Args: 
 Char: A
 String: (null)
 Pointer: 0x7ffdd2ac7200
@@ -131,7 +146,6 @@ ft_printf return value: 86
 
 printf:
 
-Args: 
 Char: A
 String: (null)
 Pointer: 0x7ffdd2ac7200
@@ -142,6 +156,7 @@ Lower Hex: 24db0
 Upper Hex: 24DB0
 
 printf return value: 86
+```
 
 👨‍💻 Authors
 

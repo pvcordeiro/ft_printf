@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = ft_printf.c pv_printer.c
+SRCS = ft_printf.c ft_printer.c
 OBJS = $(SRCS:.c=.o)
 NAME = libftprintf.a
 
@@ -30,5 +30,5 @@ test:
 	@echo "\nCompiling everything and testing it:\n"
 	@$(CC) $(CFLAGS) -c $(SRCS)
 	@ar rcs $(NAME) $(OBJS)
-	@$(CC) $(CFLAGS) $(INCLUDES) main.c $(NAME) -o main && ./main
-	@rm -f main $(OBJS) $(NAME)
+	@$(CC) $(CFLAGS) $(INCLUDES) main.c $(NAME) && ./a.out
+	@rm -f a.out $(OBJS) $(NAME)

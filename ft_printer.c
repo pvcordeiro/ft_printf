@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pv_printer.c                                       :+:      :+:    :+:   */
+/*   ft_printer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 21:05:03 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/08 00:32:16 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/08 01:57:05 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,46 +15,33 @@
 int	pv_puthex(long n, int base, int upper)
 {
 	int		count;
+	char	*digits;
 
 	count = 0;
+	if (upper)
+		digits = "0123456789ABCDEF";
+	else
+		digits = "0123456789abcdef";
 	if (n < 0)
 	{
 		n = -n;
 		count += pv_putchar('-');
 	}
-	if (base == 16)
-	{
-		if (n >= 16)
-			count += pv_puthex(n / 16, base, upper);
-		if (upper)
-			count += pv_putchar("0123456789ABCDEF"[n % 16]);
-		else
-			count += pv_putchar("0123456789abcdef"[n % 16]);
-	}
-	else if (base == 10)
-	{
-		if (n >= 10)
-			count += pv_puthex(n / 10, base, upper);
-		count += pv_putchar(n % 10 + '0');
-	}
-	return (count);
+	if (n >= base)
+		count += pv_puthex(n / base, base, upper);
+	return (count += pv_putchar(digits[n % base]));
 }
 
 int	pv_putpointer(void *p)
 {
-	int	count;
-
-	count = 0;
 	if (!p)
-		return (count += pv_putstr("(nil)"));
-	count += pv_putstr("0x");
-	count += pv_puthex_unsigned((unsigned long)p);
-	return (count);
+		return (pv_putstr("(nil)"));
+	return (pv_putstr("0x") + pv_puthex_unsigned((unsigned long)p));
 }
 
 int	pv_puthex_unsigned(unsigned long n)
 {
-	int		count;
+	int	count;
 
 	count = 0;
 	if (n >= 16)
@@ -65,21 +52,14 @@ int	pv_puthex_unsigned(unsigned long n)
 
 int	pv_putstr(char *s)
 {
-	int	count;
-
-	count = 0;
 	if (!s)
-		return (count += pv_putstr("(null)"));
-	while (*s)
-		count += pv_putchar(*s++);
-	return (count);
+		return (pv_putstr("(null)"));
+	if (!*s)
+		return (0);
+	return (pv_putchar(*s) + pv_putstr(s + 1));
 }
 
 int	pv_putchar(char c)
 {
-	int	count;
-
-	count = 0;
-	count += write(1, &c, 1);
-	return (count);
+	return (write(1, &c, 1));
 }

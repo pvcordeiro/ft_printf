@@ -1,180 +1,148 @@
-ft_printf 🖨️
+# ft_printf 🖨️
 
-ft_printf is my custom implementation of the classic printf function in C. This project was created as part of the 42 curriculum to gain a deeper understanding of variadic functions and formatted printing.
-Table of Contents 📑
+## 📜 Overview
 
-    Description
-    Files
-    Usage
-    Functions
-    Installation
-    Example
-    Makefile
-    Contributing
-    License
+`ft_printf` is my custom implementation of the standard `printf` function in C, which formats and prints various types of data to the standard output. It supports multiple format specifiers, such as characters, strings, integers, unsigned integers, hexadecimal values, and pointers.
 
-Description 📜
+## 🔧 Features
 
-ft_printf replicates the behavior of the C standard library function printf. It handles formatted output with various specifiers and supports the following:
+- Supports basic specifiers: `%c`, `%s`, `%d`, `%i`, `%u`, `%x`, `%X`, `%p`, and `%%`.
+- Implements formatted printing with recursion for hexadecimal and pointer output.
+- Handles edge cases like null pointers and empty strings.
+- Returns the number of characters printed, similar to the standard `printf`.
 
-    %s - String
-    %c - Character
-    %d / %i - Signed integer
-    %u - Unsigned integer
-    %x - Lowercase hexadecimal
-    %X - Uppercase hexadecimal
-    %p - Pointer
-    %% - Literal percentage character
+## 🛠️ Files
 
-This implementation processes format specifiers using a variadic function, which handles a variable number of arguments and prints them based on the format. The library is optimized for efficient handling of different types and edge cases such as null pointers.
+- **`ft_printf.c`**: Main logic for handling the printing functionality and format parsing.
+- **`ft_printer.c`**: Helper functions to print specific data types, including characters, strings, integers, hexadecimal values, and pointers.
+- **`ft_printf.h`**: Header file containing function prototypes and necessary includes.
+- **`main.c`**: A test file for checking the correctness of the `ft_printf` implementation.
+- **`Makefile`**: Build file for compiling the project and generating the static library `libftprintf.a`.
 
-Files 📂
+## 📑 Functionality
 
-This repository contains the following files:
+### `ft_printf`
 
-ft_printf.c
+```c
+int	ft_printf(const char *input, ...);
 
-    Description: Implements the core ft_printf function, which processes the input format and calls helper functions to handle specific format specifiers.
+The main function that mimics the behavior of the standard printf. It takes a format string and a variable number of arguments.
+pv_checker
 
-ft_printer.c
+int	pv_checker(const char *input, va_list args);
 
-    Description: Contains the helper functions that handle printing strings, characters, integers, hexadecimal numbers, and pointers.
+Responsible for parsing the format string and calling appropriate functions based on the format specifiers.
+pv_filter_args
 
-ft_printf.h
+int	pv_filter_args(char letter, va_list args);
 
-    Description: Header file that contains the function prototypes and necessary includes. This file is required to use the ft_printf function in other C files.
+Handles specific format specifiers (%s, %c, %d, %u, %x, %X, %p).
+pv_puthex
 
-main.c
+int	pv_puthex(long n, int base, int upper);
 
-    Description: A test file used to compare the behavior of ft_printf against the standard printf function. It tests various format specifiers and prints the return values of both functions.
+Prints the hexadecimal representation of a number (both lower and upper case).
+pv_puthex_unsigned
 
-Makefile
+int	pv_puthex_unsigned(unsigned long n);
 
-    Description: A build script used to compile and link the ft_printf library and the test program. It supports commands for compiling, cleaning, and testing.
+Handles the printing of unsigned hexadecimal values.
+pv_putpointer
 
-Usage 🚀
+int	pv_putpointer(void *pointer);
 
-To use ft_printf in your C project, include the header file ft_printf.h and link the compiled library (libftprintf.a) in your build process.
-Example Usage
+Prints the address of a pointer in the format 0x followed by the hexadecimal value.
+pv_putstr
+
+int	pv_putstr(char *s);
+
+Prints a string, handling NULL strings and empty strings by printing (null) or an empty string.
+pv_putchar
+
+int	pv_putchar(char c);
+
+Writes a single character to the standard output.
+📦 Compilation
+
+To compile the project and create the static library libftprintf.a, run the following command:
+
+make
+
+This will generate the library libftprintf.a, which you can use in other projects.
+
+To clean up the object files and the static library, use:
+
+make clean
+
+To completely clean the project (remove object files and the library), use:
+
+make fclean
+
+To rebuild everything from scratch, use:
+
+make re
+
+Testing
+
+You can also test the implementation by running:
+
+make test
+
+This will compile the library, link it with the provided main.c, and run the tests.
+📝 Example Usage
+Main file (main.c)
 
 #include "ft_printf.h"
 #include <stdio.h>
 #include <limits.h>
 
-int main(void)
+int	main(void)
 {
-    char character = 'A';
-    char *string = NULL;
-    int integer = INT_MIN;
-    unsigned int u_int = UINT_MAX;
-    int hex = 151516;
-    int result;
+	char			character = 'A';
+	char			*string = NULL;
+	int				integer = INT_MIN;
+	unsigned int	u_int = UINT_MAX;
+	int				hex = 151516;
+	int				result;
 
-    ft_printf("\n\nft_printf:\n");
-    result = ft_printf("\nArgs: \nChar: %c\nString: %s\nPointer: %p\nInt: %d\nUnsigned int: %u\nPercent: %%\nLower Hex: %x\nUpper Hex: %X\n", 
-        character, string, &string, integer, u_int, hex, hex);
-    ft_printf("\nft_printf return value: %d\n", result);
-
-    ft_printf("\n\nprintf:\n");
-    result = printf("\nArgs: \nChar: %c\nString: %s\nPointer: %p\nInt: %d\nUnsigned int: %u\nPercent: %%\nLower Hex: %x\nUpper Hex: %X\n", 
-        character, string, &string, integer, u_int, hex, hex);
-    printf("\nprintf return value: %d\n", result);
+	ft_printf("\n\nft_printf:\n");
+	result = ft_printf("\nArgs: \nChar: %c\nString: %s\nPointer: %p\nInt: %d\nUnsigned int: %u\nPercent: %%\nLower Hex: %x\nUpper Hex: %X\n", character, string, &string, integer, u_int, hex, hex);
+	ft_printf("\nft_printf return value: %d\n", result);
+	ft_printf("\n\nprintf:\n");
+	result = printf("\nArgs: \nChar: %c\nString: %s\nPointer: %p\nInt: %d\nUnsigned int: %u\nPercent: %%\nLower Hex: %x\nUpper Hex: %X\n", character, string, &string, integer, u_int, hex, hex);
+	printf("\nprintf return value: %d\n", result);
 }
 
 Example Output:
 
 ft_printf:
+
 Args: 
 Char: A
 String: (null)
-Pointer: 0x7ffee8fd38a8
+Pointer: 0x7ffdd2ac7200
 Int: -2147483648
 Unsigned int: 4294967295
 Percent: %
-Lower Hex: 249f4
-Upper Hex: 249F4
-ft_printf return value: 103
+Lower Hex: 24db0
+Upper Hex: 24DB0
+
+ft_printf return value: 86
 
 printf:
+
 Args: 
 Char: A
 String: (null)
-Pointer: 0x7ffee8fd38a8
+Pointer: 0x7ffdd2ac7200
 Int: -2147483648
 Unsigned int: 4294967295
 Percent: %
-Lower Hex: 249f4
-Upper Hex: 249F4
-printf return value: 103
+Lower Hex: 24db0
+Upper Hex: 24DB0
 
-Functions 🧑‍💻
+printf return value: 86
 
-Here’s a list of functions implemented in ft_printf:
-int ft_printf(const char *format, ...)
+👨‍💻 Authors
 
-    Description: The main function. It takes a format string and a variable number of arguments, processes them, and prints the result to the standard output.
-
-int pv_checker(const char *input, va_list args)
-
-    Description: This function processes each character of the format string and checks if it is a valid format specifier. It then calls the appropriate function to handle the specifier.
-
-int pv_filter_args(char letter, va_list args)
-
-    Description: This function handles each format specifier, such as %s, %d, %x, etc., by calling the corresponding helper function to print the argument.
-
-int pv_puthex(long n, int base, int upper)
-
-    Description: This function prints the hexadecimal representation of a number, either in lowercase or uppercase.
-
-int pv_putpointer(void *pointer)
-
-    Description: This function prints a pointer address in the format 0x followed by the hexadecimal representation of the pointer.
-
-int pv_putstr(char *s)
-
-    Description: This function prints a string. If the string is NULL, it prints (null).
-
-int pv_putchar(char c)
-
-    Description: This function writes a single character to standard output using the write() system call.
-
-int pv_puthex_unsigned(unsigned long n)
-
-    Description: This function prints an unsigned long number in hexadecimal format.
-
-Installation 🔧
-
-To install ft_printf, clone this repository and include ft_printf.c, ft_printer.c, and ft_printf.h in your project.
-
-git clone https://github.com/your-username/ft_printf.git
-
-Compile the library by running:
-
-make
-
-Make sure to include the compiled libftprintf.a in your project's linking process.
-Makefile 🛠️
-
-The provided Makefile allows you to build, clean, and test the ft_printf library easily.
-Makefile Commands:
-
-    make: Builds the libftprintf.a static library.
-    make clean: Removes the compiled object files.
-    make fclean: Removes the object files and the static library.
-    make re: Cleans and rebuilds the library.
-    make test: Compiles and tests the ft_printf function with the provided main.c.
-
-Contributing 🤝
-
-Contributions are welcome! Feel free to fork the repository and submit a pull request if you’d like to improve or add functionality.
-How to Contribute:
-
-    Fork the repository.
-    Create a new branch (git checkout -b feature-branch).
-    Make your changes and commit them (git commit -am 'Add new feature').
-    Push to the branch (git push origin feature-branch).
-    Open a pull request.
-
-License 📜
-
-This project is open-source and available under the MIT License.
+    pvcordeiro (me)

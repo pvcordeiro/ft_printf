@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 20:14:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/08 16:46:31 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:24:56 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	pv_puthex_n_deci(long n, int base, int upper)
 
 int	pv_parse_args(char letter, va_list args)
 {
-	int	count;
+	int		count;
 	char	c;
 
 	count = 0;
@@ -119,9 +119,14 @@ int	ft_printf(const char *input, ...)
 // 	int				result;
 
 // 	ft_printf("\n\nft_printf:\n");
-// 	result = ft_printf("\nChar: %c\nString: %s\nPointer: %p\nInt: %d\nUnsigned int: %u\nPercent: %%\nLower Hex: %x\nUpper Hex: %X\n", character, string, pointer, integer, u_int, hex, hex);
+// 	result = ft_printf("\nChar: %c\nString: %s\nPointer: %p\nInt: %d\n"
+// 	"Unsigned int: %u\nPercent: %%\nLower Hex: %x\nUpper Hex: %X\n",
+// 		character, string, pointer, integer, u_int, hex, hex);
 // 	ft_printf("\nft_printf return value: %d\n", result);
-// 	ft_printf("\n\nprintf:\n");
-// 	result = printf("\nChar: %c\nString: %s\nPointer: %p\nInt: %d\nUnsigned int: %u\nPercent: %%\nLower Hex: %x\nUpper Hex: %X\n", character, string, pointer, integer, u_int, hex, hex);
+
+// 	printf("\n\nprintf:\n");
+// 	result = printf("\nChar: %c\nString: %s\nPointer: %p\nInt: %d\n"
+// 	"Unsigned int: %u\nPercent: %%\nLower Hex: %x\nUpper Hex: %X\n",
+// 		character, string, pointer, integer, u_int, hex, hex);
 // 	printf("\nprintf return value: %d\n", result);
 // }

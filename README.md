@@ -19,47 +19,37 @@
 - **`main.c`**: A test file for checking the correctness of the `ft_printf` implementation.
 - **`Makefile`**: Build file for compiling the project and generating the static library `libftprintf.a`.
 
-## 📑 Functionality
+## 📑 Functions
 
-### `ft_printf`
-
-
-int	ft_printf(const char *input, ...);
+**`int	ft_printf(const char *input, ...);`**
 
 The main function that mimics the behavior of the standard printf. It takes a format string and a variable number of arguments.
-pv_checker
 
-int	pv_checker(const char *input, va_list args);
+**`int	pv_checker(const char *input, va_list args);`**
 
 Responsible for parsing the format string and calling appropriate functions based on the format specifiers.
-pv_filter_args
 
-int	pv_filter_args(char letter, va_list args);
+**`int	pv_filter_args(char letter, va_list args);`**
 
 Handles specific format specifiers (%s, %c, %d, %u, %x, %X, %p).
-pv_puthex
 
-int	pv_puthex(long n, int base, int upper);
+**`int	pv_puthex(long n, int base, int upper);`**
 
-Prints the hexadecimal representation of a number (both lower and upper case).
-pv_puthex_unsigned
+Prints the hexadecimal representation of a number (both lower and upper case) or a decimal number.
 
-int	pv_puthex_unsigned(unsigned long n);
+**`int	pv_puthex_unsigned(unsigned long n);`**
 
 Handles the printing of unsigned hexadecimal values.
-pv_putpointer
 
-int	pv_putpointer(void *pointer);
+**`int	pv_putpointer(void *pointer);`**
 
 Prints the address of a pointer in the format 0x followed by the hexadecimal value.
-pv_putstr
 
-int	pv_putstr(char *s);
+**`int	pv_putstr(char *s);`**
 
 Prints a string, handling NULL strings and empty strings by printing (null) or an empty string.
-pv_putchar
 
-int	pv_putchar(char c);
+**`int	pv_putchar(char c);`**
 
 Writes a single character to the standard output.
 
@@ -73,7 +63,7 @@ make
 
 This will generate the library libftprintf.a, which you can use in other projects.
 
-To clean up the object files and the static library, use:
+To clean up the object files, use:
 
 ```
 make clean
@@ -99,7 +89,7 @@ You can also test the implementation by running:
 make test
 ```
 
-This will compile the library, link it with the provided main.c, and run the tests.
+This will compile the library, link it with the provided main.c, clean everything and run the tests.
 
 📝 Example Usage
 
